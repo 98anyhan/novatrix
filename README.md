@@ -1,5 +1,12 @@
-# V.34
-# Azure -MOV25
+
+# Azure - MOV25
+
 **Anya Hansson Faiq**
-Detta är mitt repo för Azure-kursen
-E-mail: 98anyhan@gafe.molndal.se
+
+Detta är mitt kursrepo för Azure-kursen.
+
+## Veckor
+
+- V.34
+- V.35
+- V.36
