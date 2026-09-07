@@ -1,0 +1,47 @@
+# Vecka 36 – Nätverk i Azure
+
+## Virtuellt nätverk
+
+Jag skapade det virtuella nätverket `vnet-novatrix` med adressutrymmet `10.0.0.0/16`.
+
+Jag skapade två subnät:
+
+- `subnet-web` – `10.0.1.0/24` för webbservern och formuläret.
+- `subnet-db` – `10.0.2.0/24` för framtida backend och lagring.
+
+Webbservern ligger i det publika subnätet medan backend och lagring är separerade i ett privat subnät.
+
+## Säkerhet
+
+Jag skapade nätverkssäkerhetsgruppen `nsg-web` och kopplade den till `subnet-web`.
+
+Följande trafik tillåts:
+
+- HTTP – port `80`
+- HTTPS – port `443`
+- SSH – port `22`, endast från min administrativa IP-adress
+
+Övrig inkommande trafik blockeras av `DenyAllInBound`.
+
+## Webbserver
+
+Webbservern `vm-novatrix-web` ligger i `subnet-web`.
+
+Jag installerade Nginx och publicerade Novatrix-formuläret på webbservern.
+
+Kommandon som användes:
+
+```bash
+sudo apt update
+sudo apt install nginx
+sudo systemctl status nginx
+
+erifiering
+
+Jag använde Verifiera IP-flöde i Azure Nätverksövervakning för att kontrollera NSG-reglerna.
+
+HTTP på port 80 gav Åtkomst beviljad genom regeln allow-web.
+
+Jag testade även SSH på port 22 från en annan IP-adress. Den trafiken gav Åtkomst nekad och blockerades av DenyAllInBound.
+
+Detta verifierar att webbtrafik tillåts medan otillåten inkommande trafik blockeras.
