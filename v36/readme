@@ -1,1 +1,16 @@
 
+# Vecka 36 – Azure nätverk
+
+Den här veckan byggde och konfigurerade jag nätverket för Novatrix i Azure.
+
+Jag skapade:
+- `vnet-novatrix` – `10.0.0.0/16`
+- `subnet-web` – `10.0.1.0/24`
+- `subnet-db` – `10.0.2.0/24`
+- `nsg-web`
+
+Webbservern `vm-novatrix-web` placerades i `subnet-web` och kör Nginx med Novatrix-formuläret.
+
+NSG-reglerna tillåter HTTP/HTTPS samt SSH från min administrativa IP-adress. Övrig inkommande trafik blockeras.
+
+Trafiken verifierades med Verifiera IP-flöde i Azure Nätverksövervakning.
