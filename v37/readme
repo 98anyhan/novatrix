@@ -12,3 +12,9 @@ Den här veckan arbetar jag med lagring för Novatrix i Azure.
 - SAS-token skapades med endast läsbehörighet
 - Åtkomsten begränsades till HTTPS och en kort giltighetstid
 - Verifierade att filen kunde öppnas via SAS-länken
+
+## RBAC och Managed Identity
+
+- Aktiverade systemtilldelad hanterad identitet för `vm-novatrix-web`
+- Tilldelade `vm-novatrix-web` rollen `Storage Blob Data Reader` på `lagringnovatrix`
+- Verifierade att direkt åtkomst till blobben utan SAS-token nekas med `PublicAccessNotPermitted`
