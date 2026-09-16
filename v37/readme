@@ -1,2 +1,14 @@
-README V.37
-* Skapade ett storage account och en Blob container för Novatrix ärenden och bifogade filer
+# Vecka 37 – Azure Storage
+
+Den här veckan arbetar jag med lagring för Novatrix i Azure.
+
+## Storage Account och Blob Storage
+- Skapade ett Storage Account: `lagringnovatrix`
+- Skapade Blob-containern `arenden`
+- Laddade upp en testfil i containern för att verifiera lagringen
+
+## Säker åtkomst
+- Testade åtkomst till en blob med SAS
+- SAS-token skapades med endast läsbehörighet
+- Åtkomsten begränsades till HTTPS och en kort giltighetstid
+- Verifierade att filen kunde öppnas via SAS-länken
