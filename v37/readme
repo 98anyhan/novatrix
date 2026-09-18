@@ -18,3 +18,17 @@ Den här veckan arbetar jag med lagring för Novatrix i Azure.
 - Aktiverade systemtilldelad hanterad identitet för `vm-novatrix-web`
 - Tilldelade `vm-novatrix-web` rollen `Storage Blob Data Reader` på `lagringnovatrix`
 - Verifierade att direkt åtkomst till blobben utan SAS-token nekas med `PublicAccessNotPermitted`
+
+
+## Delmoment 3 – Koppla formuläret till Blob Storage
+
+Jag kopplade Novatrix kundtjänstformulär till Azure Blob Storage.
+
+- VM:ens Managed Identity har rollen Storage Blob Data Contributor på containern `arenden`.
+- Flask-backenden körs som tjänsten `arendeapp`.
+- Nginx skickar POST-anrop från `/submit` till Flask på `127.0.0.1:5000`.
+- Backend använder `DefaultAzureCredential`, vilket innebär att ingen lagringsnyckel behöver sparas i koden.
+- Ett testärende skickades via webbformuläret och sparades som `arende.json` i Blob Storage.
+
+Lagringskonto: `lagringnovatrix`  
+Container: `arenden`
