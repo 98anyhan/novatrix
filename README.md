@@ -10,3 +10,5 @@ Detta är mitt kursrepo för Azure-kursen.
 - V.34
 - V.35
 - V.36
+- V.37
+- V.38
