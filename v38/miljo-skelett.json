@@ -21,7 +21,7 @@
   "resources": [ 
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2023-01-01",
+    "apiVersion": "2443023-01-01",
     "name": "lagringnovatrix",
     "location": "[parameters('location')]",
     "sku": {
@@ -37,7 +37,7 @@
   "properties": {
     "securityRules": [
       {
-        "name": "allow-web-80-443",
+        "name": "allow-http-https",
         "properties": {
           "priority": 100,
           "protocol": "Tcp",
