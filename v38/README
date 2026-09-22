@@ -10,3 +10,19 @@ Jag skapade en ARM-template i `v38/miljo-skelett.json` som innehåller:
 - Virtuellt nätverk: `novatrix-vnet`
 - Subnet: `subnet-web`
 - Region: Sweden Central
+
+
+
+Innan deployment använde jag `what-if` för att kontrollera vilka förändringar templaten skulle göra:
+
+`az deployment group what-if -g rg-novatrix-v34 --template-file miljo-skelett.json`
+
+Därefter deployade jag templaten med:
+
+`az deployment group create -g rg-novatrix-v34 --template-file miljo-skelett.json`
+
+Deploymenten genomfördes framgångsrikt och resurserna verifierades i Azure-portalen.
+
+Jag versionshanterade även ARM-templaten med Git och GitHub. Efter den första versionen ändrade jag namnet på webbregeln till `allow-http-https` och gjorde en ny commit. På så sätt går det att följa hur infrastrukturen förändras över tid.
+
+Miljön kan återskapas genom att hämta repot och deploya ARM-templaten på nytt med Azure CLI.
