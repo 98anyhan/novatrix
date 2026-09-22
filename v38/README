@@ -1,2 +1,12 @@
 ## V38 – Infrastructure as Code med ARM-template
 
+Under vecka 38 arbetade jag med Infrastructure as Code (IaC) och ARM-templates för Novatrix-miljön.
+
+Jag skapade en ARM-template i `v38/miljo-skelett.json` som innehåller:
+
+- Storage Account: `lagringnovatrix`
+- Network Security Group: `novatrix-nsg`
+- Webbregel för inkommande trafik på port 80 och 443
+- Virtuellt nätverk: `novatrix-vnet`
+- Subnet: `subnet-web`
+- Region: Sweden Central
