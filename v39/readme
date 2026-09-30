@@ -1,0 +1,58 @@
+# V39 – Microsoft 365-integration för Novatrix
+
+## Delmoment 1 – Repo
+
+Jag har skapat en ny del för vecka 39 i mitt Novatrix-repo och dokumenterat arbetet här.
+
+## Delmoment 2 – Bygg ett flöde
+
+Jag skapade ett automatiserat flöde i Power Automate för Novatrix kundtjänst.
+
+Flödet använder Azure Blob Storage som trigger och bevakar containern `arenden` i lagringskontot `lagringnovatrix`.
+
+När en ny blob läggs till eller ändras startas flödet automatiskt.
+
+**Flödets kedja:**
+
+Azure Blob Storage → Power Automate → SharePoint → Outlook
+
+## Delmoment 3 – Integrera mot Microsoft 365
+
+Jag skapade SharePoint-listan **Novatrix ärenderegister** som fungerar som kundtjänstens ärenderegister.
+
+Listan innehåller:
+
+- Ärenden
+- Avsändare
+- Tidpunkt
+
+När Power Automate-flödet startas skapas automatiskt en ny post i SharePoint-listan.
+
+Flödet skickar även en notifiering via Outlook till kundtjänst när ett nytt ärende kommer in.
+
+## Delmoment 4 – Koppla ihop med Azure
+
+Power Automate är kopplat till Azure Blob Storage och bevakar containern `arenden`.
+
+När ett nytt ärende skapas i Azure startar flödet och:
+
+1. Skapar en post i SharePoint-listan **Novatrix ärenderegister**.
+2. Skickar en notifiering via Outlook.
+
+Den fullständiga kedjan från webbformuläret kunde inte verifieras vid dokumentationstillfället eftersom den befintliga virtuella datorn inte kunde startas på grund av en Azure-kvotbegränsning.
+
+Azure Blob Storage → Microsoft 365-delen kunde däremot verifieras och fungerade korrekt.
+
+## Delmoment 5 – Verifiera och dokumentera
+
+Flödet testades genom att ett nytt testärende (`test-sharepoint.json`) lades till i Azure Blob Storage-containern `arenden`.
+
+Power Automate startades automatiskt och körningen genomfördes utan fel.
+
+Testet verifierade följande kedja:
+
+Azure Blob Storage → Power Automate → SharePoint → Outlook
+
+Testärendet skapades som en ny post i **Novatrix ärenderegister** och en notifiering skickades via Outlook.
+
+Körhistoriken i Power Automate visade att samtliga steg genomfördes utan fel.
