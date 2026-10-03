@@ -1,1 +1,33 @@
+# V40 – Virtualiseringsnivåer
 
+## Delmoment 1 – Repo
+För vecka 40 har jag skapat mappen `v40` i Novatrix-repot. Här finns filerna som används för containerlösningen.
+
+## Delmoment 2 – Container
+Jag valde att köra en del av Novatrix kundtjänst som en container i Azure.
+
+Webbsidan finns i `index.html` och paketeras med hjälp av en `Dockerfile` som använder Nginx.
+
+Docker-imagen byggdes i Azure och lagrades i Azure Container Registry som:
+
+`novatrixacr98.azurecr.io/novatrix-app:v1`
+
+Imagen kördes därefter i Azure Container Instances. Containern kör på port 80 och Novatrix kundtjänstsida kunde nås via dess publika DNS-adress.
+
+## Delmoment 3 – Jämförelse
+
+### VM
+En virtuell maskin är en virtuell dator med ett eget operativsystem. Den ger stor kontroll men kräver mer resurser och administration.
+
+### Container
+En container paketerar applikationen och det som behövs för att köra den utan ett komplett eget operativsystem. Den är därför lättare och snabbare att starta än en VM. I denna uppgift körs Novatrix webbsida som en container.
+
+### Serverless
+Serverless innebär att kod kan köras utan att man själv administrerar en server. Ett exempel är Azure Functions. En funktion kan exempelvis startas när ett HTTP-anrop kommer in.
+
+För Novatrix ärendemottagning ger en VM mest kontroll men kräver mest administration. En container är lättare att paketera och flytta mellan miljöer. Serverless passar bra för mindre händelsestyrda funktioner, exempelvis att ta emot ett nytt kundärende.
+
+## Delmoment 4 – Verifiering
+Jag verifierade lösningen med Azure CLI och containern `novatrix-app` visades med status `Running`.
+
+Jag öppnade även containerns publika DNS-adress i webbläsaren och Novatrix kundtjänstsida visades korrekt.
