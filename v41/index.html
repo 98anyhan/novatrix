@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordvik Fastigheter - Felanmälan</title>
+</head>
+
+<body>
+    <h1>Nordvik Fastigheter</h1>
+    <h2>Felanmälan</h2>
+
+    <p>
+        Välkommen till Nordvik Fastigheters portal för felanmälan.
+        Beskriv problemet nedan så återkommer vi så snart som möjligt.
+    </p>
+
+    <form>
+        <label for="beskrivning">Beskriv felet:</label><br><br>
+
+        <textarea id="beskrivning" name="beskrivning"
+                  rows="6" cols="50"
+                  placeholder="Beskriv problemet här..."></textarea>
+
+        <br><br>
+
+        <label for="bild">Bifoga bild:</label><br><br>
+        <input type="file" id="bild" name="bild" accept="image/*">
+
+        <br><br>
+
+        <button type="submit">Skicka felanmälan</button>
+    </form>
+</body>
+</html>
